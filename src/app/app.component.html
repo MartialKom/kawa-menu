@@ -9,7 +9,7 @@
     <style>
         .pdf-container {
             height: calc(100vh - 300px);
-            min-height: 1000px;
+            min-height: 500px;
         }
         @media (max-width: 800px) {
             .pdf-container {
@@ -44,21 +44,25 @@
 
         <!-- PDF Viewer Section -->
         <section class="mb-12">
-            <div class="bg-white rounded-xl shadow-xl overflow-hidden">
-                <div class="bg-amber-600 text-amber-50 p-4 flex justify-between items-center">
-                    <h3 class="text-xl font-bold">Le menu actualisé</h3>
-
-                </div>
-                <div class="pdf-container w-full">
-                    <iframe 
-                        src="https://docs.google.com/viewer?srcid=1HyKOJeRgtPXjOXjqWwoEnZ5Y-6sNxxa0&pid=explorer&efh=false&a=v&chrome=false&embedded=true" 
-                        class="w-full h-full" 
-                        frameborder="0"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-        </section>
+          <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+              <div class="bg-amber-600 text-amber-50 p-4 flex justify-between items-center">
+                  <h3 class="text-xl font-bold">Le menu actualisé</h3>
+              </div>
+              <div class="pdf-container w-full relative">
+                  <div *ngIf="loading" class="absolute inset-0 flex items-center justify-center bg-white z-10">
+                      <p>Chargement du PDF...</p>
+                      <!-- Vous pouvez également ajouter un spinner ici -->
+                  </div>
+                  <iframe 
+                      (load)="loading = false" 
+                      src="https://docs.google.com/viewer?srcid=1HyKOJeRgtPXjOXjqWwoEnZ5Y-6sNxxa0&pid=explorer&efh=false&a=v&chrome=false&embedded=true" 
+                      class="w-full h-full" 
+                      frameborder="0"
+                      allowfullscreen>
+                  </iframe>
+              </div>
+          </div>
+      </section>
 
     </main>
 

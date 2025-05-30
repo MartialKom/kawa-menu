@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'kawa-menu';
   logoUrl: string = 'assets/logo.png';
+
+  loading: boolean = true;
 }
